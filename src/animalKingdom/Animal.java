@@ -22,6 +22,16 @@ public abstract class Animal
         return "Plants";
     }
 
+    public String getName()
+    {
+        return name;
+    }
+
+    public int getYear()
+    {
+        return year;
+    }
+
     abstract public String moves();
     abstract public String breathes();
     abstract public String reproduces();

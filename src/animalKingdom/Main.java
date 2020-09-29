@@ -28,5 +28,24 @@ public class Main
         animals.add(new Fish("Perch", 1758));
 
         System.out.println(animals);
+
+        System.out.println("\n\nDescending order by year named:");
+        animals.sort((first, second) -> second.getYear() - first.getYear());
+        System.out.println(animals);
+
+        System.out.println("\n\nAlphabetical:");
+        animals.sort((first, second) -> first.getName().compareToIgnoreCase(second.getName()));
+        System.out.println(animals);
+
+        System.out.println("\n\nBy movement type:");
+        animals.sort((first, second) -> first.moves().compareToIgnoreCase(second.moves()));
+        System.out.println(animals);
+
+/*
+    List only those animals the breath with lungs
+    List only those animals that breath with lungs and were named in 1758
+    List only those animals that lay eggs and breath with lungs
+    List alphabetically only those animals that were named in 1758
+*/
     }
 }

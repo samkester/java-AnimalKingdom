@@ -25,4 +25,9 @@ public abstract class Animal
     abstract public String moves();
     abstract public String breathes();
     abstract public String reproduces();
+
+    @Override
+    public String toString() {
+        return id + ": " + name + "\t(" + year + ")\t" + moves() + "\t" + breathes() + "\t" + reproduces() + "\n";
+    }
 }

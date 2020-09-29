@@ -41,11 +41,41 @@ public class Main
         animals.sort((first, second) -> first.moves().compareToIgnoreCase(second.moves()));
         System.out.println(animals);
 
-/*
-    List only those animals the breath with lungs
-    List only those animals that breath with lungs and were named in 1758
-    List only those animals that lay eggs and breath with lungs
-    List alphabetically only those animals that were named in 1758
-*/
+        System.out.println("\n\nOnly lung breathers:");
+        List<Animal> filtered = filter(animals, (item) -> item.breathes() == "lungs");
+        System.out.println(filtered);
+
+        System.out.println("\n\nOnly lung breathers named in 1758:");
+        filtered = filter(animals, (item) -> item.breathes() == "lungs" && item.getYear() == 1758);
+        System.out.println(filtered);
+
+        System.out.println("\n\nOnly lung breathers that lay eggs:");
+        filtered = filter(animals, (item) -> item.breathes() == "lungs" && item.reproduces() == "eggs");
+        System.out.println(filtered);
+
+        System.out.println("\n\nAlphabetical, only those named in 1758:");
+        filtered = filter(animals, (item) -> item.getYear() == 1758);
+        filtered.sort((first, second) -> first.getName().compareToIgnoreCase(second.getName()));
+        System.out.println(filtered);
+
+        System.out.println("\n\nAlphabetical, only mammals:");
+        filtered = filter(animals, (item) -> item instanceof Mammal);
+        filtered.sort((first, second) -> first.getName().compareToIgnoreCase(second.getName()));
+        System.out.println(filtered);
+    }
+
+    private static List<Animal> filter(List<Animal> list, FilterAnimal filter)
+    {
+        List<Animal> result = new ArrayList<Animal>();
+
+        for (Animal item : list)
+        {
+            if(filter.test(item))
+            {
+                result.add(item);
+            }
+        }
+
+        return result;
     }
 }
